@@ -8,7 +8,7 @@ from data_processing import get_clustering_df
 
 if __name__ == "__main__":
     # review_df = get_clustering_df()
-    reviews = np.loadtxt(r"E:\Embedding Dump\10k_seed10_review_embeddings.csv")
+    reviews = np.loadtxt(r"10k_seed10_review_embeddings.csv")
     k = 5
     clustering_model = KMeans(n_clusters=k)
     clustering_model.fit(reviews)

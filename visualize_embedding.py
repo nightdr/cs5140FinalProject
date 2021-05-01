@@ -8,7 +8,7 @@ from sklearn.decomposition import PCA
 from data_processing import get_clean_review_df
 
 if __name__ == '__main__':
-    reviews = np.loadtxt(r"E:\Embedding Dump\10k_seed10_review_embeddings.csv")
+    reviews = np.loadtxt(r"10k_seed10_review_embeddings.csv")
     full_df = get_clean_review_df()
     ratings = full_df["Score"].to_numpy()
 
