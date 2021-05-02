@@ -1,7 +1,6 @@
 from collections import defaultdict
 
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.decomposition import PCA
@@ -19,8 +18,11 @@ if __name__ == '__main__':
     clusters = defaultdict(list)
     for index in range(len(reviews)):
         clusters[ratings[index]].append(PCA_reviews[index])
+    clusters = dict(clusters)
+    clusters = dict(sorted(clusters.items(), key=lambda item: item[0]))
     ratings = clusters.keys()
     clusters = clusters.values()
+    print(ratings)
 
     fig = plt.figure()
     ax = plt.axes(projection="3d")
@@ -33,7 +35,7 @@ if __name__ == '__main__':
     if len(clusters) > 1:
         legend_labels = []
         for i in range(len(clusters)):
-            legend_labels.append("Rating = " + str(i))
+            legend_labels.append("Rating = " + str(i+1))
         ax.legend(legend_labels, loc="upper left")
     plt.show()
     fig.savefig("clustering.png", bbox_inches="tight")

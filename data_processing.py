@@ -8,7 +8,6 @@ import re
 def get_clean_review_df():
     review_df = pd.read_csv(r"../Data/foodReviews.csv")
     review_df = review_df.sample(10000, random_state=10)
-    print(review_df["Text"].to_numpy()[0])
 
     # add HelpfulnessFraction from HelpfulnessNumerator and HelpfulnessDenominator
     review_df["HelpfulnessFraction"] = round(review_df["HelpfulnessNumerator"] / review_df["HelpfulnessDenominator"], 4)
@@ -22,8 +21,6 @@ def get_clean_review_df():
     review_df["Text"] = review_df["Text"].apply(lambda x: " ".join(
         re.sub(r"[^a-zA-Z]", "", w).lower() for w in x.split() if
         re.sub(r"[^a-zA-Z]", "", w).lower() not in stop_words))
-
-    print(review_df["Text"].to_numpy()[0])
 
     return review_df
 
